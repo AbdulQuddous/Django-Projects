@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Student_list{% endblock title %}
+{% block content %}
+<h2>All student Data</h2>
+<table border='6'>
+    <thead>
+        <tr>
+            <td>Id</td>
+            <td>Name</td>
+            <td>Semester</td>
+            <td>Contact</td>
+            <td>Email</td>
+            <td>Delete</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for student in students %}
+        <tr>
+            <td>{{student.id}}</td>
+            <td>{{student.name}}</td>
+            <td>{{student.semester}}</td>
+            <td>{{student.contact}}</td>
+            <td>{{student.email}}</td>
+            <td><a href="{% url 'delete_student' student.id %}">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock content %}

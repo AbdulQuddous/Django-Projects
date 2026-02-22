@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% for student in students %}
+    <p>student name {{student.name}} has {{student.marks}}</p>
+    {% endfor %}
+    <form method="get">
+    <input type="text" name="search" placeholder="Search...">
+    
+    <select name="city">
+        <option value="">All Cities</option>
+        <option value="Lahore">Lahore</option>
+        <option value="Karachi">Karachi</option>
+    </select>
+
+    <button type="submit">Search</button>
+</form>
+
+</body>
+</html>

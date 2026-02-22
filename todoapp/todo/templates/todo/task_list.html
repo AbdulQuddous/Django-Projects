@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Task List</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Completed</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for task in tasks %}
+         <tr>
+            <td>{{task.title}}</td>
+            <td>{{task.description}}</td>
+            <td>
+                <form method='post' action="{% url 'todo:task_complete' task.pk%}">
+                    {% csrf_token %}
+                    <button type='submit'>
+                        {% if task.completed %}completed{% else %}Pending{% endif %}
+                    </button>
+                </form>
+            </td>
+            <td>
+                {{task.created_at|date:"M d,Y H:i"}}
+            </td>
+            <td>
+                <a href="{% url 'todo:task_update' task.pk%}">Edit</a>
+                <a href="{% url 'todo:task_delete' task.pk%}">Delete</a>
+            </td>
+         </tr>   
+        {% empty %}   
+        <tr>
+            <td>No taks available</td>
+        </tr>                     
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock  %}
