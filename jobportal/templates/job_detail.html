@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>{{ object.title }}</h2>
+
+<p>{{ object.description }}</p>
+
+<p>Company: {{ object.company_name }}</p>
+
+<p>Location: {{ object.location }}</p>
+
+<p>Salary: {{ object.salary }}</p>
+
+{% if user.is_authenticated %}
+
+<form method="POST" action="{% url 'apply_job' object.id %}" enctype="multipart/form-data">
+
+{% csrf_token %}
+
+<input type="file" name="resume">
+
+<button type="submit" class="btn btn-success">Apply</button>
+
+</form>
+
+{% endif %}
+
+{% endblock %}

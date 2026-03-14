@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Recruiter Dashboard</h2>
+
+<a href="{% url 'job_create' %}" class="btn btn-primary">Post New Job</a>
+
+<hr>
+
+{% for job in jobs %}
+
+<div class="card mb-3">
+
+<div class="card-body">
+
+<h4>{{ job.title }}</h4>
+
+<p>{{ job.company_name }}</p>
+
+<a href="{% url 'job_update' job.id %}" class="btn btn-warning">Edit</a>
+
+<a href="{% url 'job_delete' job.id %}" class="btn btn-danger">Delete</a>
+
+</div>
+
+</div>
+
+{% endfor %}
+
+{% endblock %}
